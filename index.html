@@ -188,8 +188,28 @@
                 再次根据最新的提交ID，跳转到最新的版本
                 git reset--hard <CommitID>
 
+                    总结：
+                    初始化Git仓库的命令
+                    git init
+                    查看文件状态的命令
+                    git status或git status -s
+                    一次性将文件加入暂存区的命令
+                    git add .
+                    将暂存区的文件提交到Git仓库的命令
+                    git commit-m "提交消息"
+                    回退到指定的版本
+                    git reset --hard id
+                    查看提交日志
+                    git log / git reflog
 
-                    加了我呢嫩恩
+                    3.远程仓库的两种访问方式
+                    Github上的远程仓库，有两种访问方式，分别是HTTPS和SSH。它们的区别是:
+                    HTTPS:零配置;但是每次访问仓库时，需要重复输入Github的账号和密码才能访问成功：
+                    git remote add origin https://github.com/simplesitiy/test123.git
+                    第一次推代码： git push -u origin master
+                    第二次：
+                    SSH:需要进行额外的配置;但是配置成功后，每次访问仓库时，不需重复输入Github的账号和密码
+                    注意:在实际开发中，推荐使用SSH的方式访问远程仓库。
 
 
 
