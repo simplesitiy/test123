@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    1.什么是Git
+    Git是一个开源的分布式版本控制系统，是目前世界上最先进、最流行的版本控制系统。可以快速高效地处理
+    从很小到非常大的项目版本管理。
+    2.Git的特性
+    Git之所以快速和高效，主要依赖于它的如下两个特性:
+    1、直接记录快照，而非差异比较
+    2、近乎所有操作都是本地执行：在Git中的绝大多数操作都只需要访问本地文件和资源，一般不
+    需要来自网络上其它计算机的信息。
+    特性:
+    ①断网后依旧可以在本地对项目进行版本管理
+    ②联网后，把本地修改的记录同步到云端服务器即可
+    3.Git中的三个区域
+    使用Git管理的项目，拥有三个区域，分别是工作区()处理工作的区域、暂存区（已完成的工作的临时存放区域，
+    等待被提交）、Git仓库(最终的存放区域)
+    4.git的三个状态：
+    已修改modified
+    已暂存 staged
+    已提交committed
+
+    已修改：表示修改了文件，但还没将修改的结果放到暂存区
+    已暂存：表示对已修改文件的当前版本做了标记，使之包含在下次提交的列表中
+    已提交：表示文件已经安全地保存在本地的Git仓库中
+
+    5.基本的git工作流程
+    1、在工作区中修改文件
+    2、将你想要下次提交的更改进行暂存
+    3、提交更新，找到暂存区的文件，将快照永久性存储到Git仓库
+
+    6.配置用户信息
+    安装完Git之后，要做的第一件事就是设置自己的用户名和邮件地址。因为通过Git对项目进行版本管理的时
+    候，Git需要使用这些基本信息，来记录是谁对项目进行了操作:
+    git config --global user.name "hiehie"
+    git config --global user.email "1379759818@qq.com"
+    注意:如果使用了--global选项，那么该命令只需要运行一次，即可永久生效。
+    查看配置信息：
+    查看所有的全局配置项
+    git config --list / git config --list --global
+    查看指定的全局配置项
+    git config user.name
+    git config user.email
+
+
+    7.获取帮助信息
+    git help<verb>
+        例如：git help config
+
+        如果不想查看完整的手册，那么可以用-h选项获得更简明的“help”输出:
+        git help -h
+        usage: git help [--all] [--guides] [--man | --web | --info] [<command>]
+            -a, --all print all available commands
+            -g, --guides print list of useful guides
+            -c, --config print all configuration variable names
+            -m, --man show man page
+            -w, --web show manual in web browser
+            -i, --info show info page
+            -v, --verbose print command description
+
+            1.获取Git仓库的两种方式
+            (1)将尚未进行版本控制的本地目录转换为Git仓库
+            (2)从其它服务器克隆一个已存在的Git仓库
+
+            2.初始化git仓库
+            git init命令会创建一个名为.git的隐藏目录，这个.git目录就是当前项目的Git仓库，里面包含了初始的必要文件，这些文件是Git仓库的必要组成部分。
+
+            3.工作区中文件的4种状态
+            工作区中的每一个文件可能有4种状态，这四种状态共分为两大类
+            未跟踪（Untracked):不被Git所管理的文件
+            已被Git管理:
+            未修改(Unmodified):工作区中文件的内容和Git仓库中文件内容保持一致
+            已修改(Modified):工作区中文件的内容和Git仓库中文件的容不一致
+            已暂存(Staged):工作区中被修改的文件已被放到暂存区，准备将修改后的文件保存到Git仓库中
+
+            Git操作的终极结果:让工作区中的文件都处于“未修改”的状态.
+
+            4.检查文件的状态
+            git status
+            可以使用git status命令查看文件处于什么状态
+            在状态报告中可以看到新建的index.html文件出现在Untracked files（未跟踪的文件）下面。
+            未跟踪的文件意味着Git在之前的快照（提交）中没有这些文件;Git不会自动将之纳入跟踪范围，除非明确地告诉它“我需要使用Git跟踪管理该文件”。
+
+            5.以精简的方式显示文件状态
+            git status -s / git status --short
+            使用git status输出的状态报告很详细，但有些繁琐。如果希望以精简的方式显示文件的状态，可以使用如下
+            两条完全等价的命令，其中-s是--short的简写形式:
+
+            6.跟踪新文件并添加到暂存区
+            git add . / git add index.html
+            添加所有的文件 / 添加指定的文件
+            使用命令git add开始跟踪一个文件。所以，要跟踪index.html文件，运行如下的命令即可
+            git add index.html
+            此时再运行git status命令，会看到index.html文件在Changes to be committed这行的下面，说明已被跟踪，并处于暂存状态:
+
+            7.clear 清空
+            8.提交更新 提交到本地仓库
+            git commit -m "第一次提交"
+            现在暂存区中有一个index.html文件等待被提交到Git仓库中进行保存。可以执行git commit命令进行提交，其中-m选项后面是本次的提交消息，用来对提交的内容做进一步的描述:
+
+            9.对已提交的文件进行修改
+
+            目前，index.html文件已经被Git 跟踪，并且工作区和Git仓库中的index.html文件内容保持一致。当我们修改了工作区中index.html的内容之后，再次运行git status和git
+            status-s命令，会看到如下的内容:
+            文件index.html出现在Changes not staged for commit这行下面，说明已跟踪文件的内容发生了变化，但还没有放到暂存区。
+            注意:修改过的、没有放入暂存区的文件前面有红色的M标记。
+
+            10.暂存已修改的文件
+            git add
+            目前，工作区中的index.html文件已被修改，如果要暂存这次修改，需要再次运行git add命令，这个命令是个多功能的命令，主要有如下3个功效:
+            (1)可以用它开始跟踪新文件
+            (2)把已跟踪的、且已修改的文件放到暂存区
+            (3)把有冲突的文件标记为已解决状态
+
+            11.提交已暂存的文件
+            git commit-m "提交消息"命令
+            再次运行git commit-m "提交消息"命令，即可将暂存区中记录的index.html的快照，提交到Git仓库中进行保存:
+
+            12.撤销修改(暂存区没有提交过，暂存区有会直接从暂存区提取)
+            git checkout -- 02.html
+
+
+            13.取消暂存的文件
+            git reset HEAD 文件名
+            git reset HEAD .
+
+            14.跳过使用暂存区域
+            git commit -a -m "描述信息"
+            git标准的工作流程是工作区→暂存区→Git仓库，但有时候这么做略显繁琐，此时可以跳过暂存区，直接将工作区中的修改提交到Git仓库，这时候Git工作的流程简化为了工作区→Git仓库。
+            Git提供了一个跳过使用暂存区域的方式，只要在提交的时候，给git commit加上-a选项，Git就会自动把所有已经跟踪过的文件暂存起来一并提交，从而跳过git add步骤:
+
+            15.移除文件
+
+            从Git仓库中移除文件的方式有两种:
+            git rm -f 文件名
+            从Git暂存区和工作区中同时移除对应的文件
+            git rm --cached 文件名
+            只从Git暂存区中移除指定的文件，但保留工作区中对应的文件
+
+            16.忽略文件
+            一般我们总会有些文件无需纳入Git的管理，也不希望它们总出现在未跟踪文件列表。在这种情况下，我们可以创建一个名为.gitignore的配置文件，列出要忽略的文件的匹配模式。
+            文件.gitignore的格式规范如下:
+            以#开头的是注释
+            以/结尾的是目录
+            以/开头防止递归
+            以!开头表示取反
+            可以使用glob模式进行文件和文件夹的匹配（glob指简化了的正则表达式)
+
+            glob模式
+            所谓的glob模式是指简化了的正则表达式:
+
+            星号*匹配零个或多个任意字符
+            [abc]匹配任何一个列在方括号中的字符（此案例匹配一个a或匹配一个b或匹配一个c)
+            问号?只匹配一个任意字符
+            在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配（比如[0-9]表示匹配所有0到9的数字)
+            两个星号**表示匹配任意中间目录（比如a/**/z可以匹配a/z、a/b/z或a/b/c/z等)
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
