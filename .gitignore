@@ -3,7 +3,7 @@
 
 #忽略index.css文件
 # 修改过的文件还是可以被检测到
-index2.html
+# index2.html
 
 # 忽略test 文件夹
 # 被忽略的文件夹彻底检测不到了
