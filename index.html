@@ -162,6 +162,31 @@
             在方括号中使用短划线分隔两个字符，表示所有在这两个字符范围内的都可以匹配（比如[0-9]表示匹配所有0到9的数字)
             两个星号**表示匹配任意中间目录（比如a/**/z可以匹配a/z、a/b/z或a/b/c/z等)
 
+            19.查看提交历史
+            完整的
+            git log
+            最近的两个
+            git log -2
+            在一行展示最近提交的两条历史信息
+            git log -2 --pretty=oneline
+            在一行上展示最近两条提交历史的信息，并自定义输出的格式：
+            %h提交的简写哈希值
+            %an作者名字
+            %ar作者修订日期，按多久以前的方式显示
+            %s提交说明
+            git log -2 --pretty=format:"%h | %an | %ar | %s"
+            git log -2 --pretty=format:"%h , %an , %ar , %s"
+
+            如果希望回顾项目的提交历史，可以使用git log这个简单且有效的命令。
+            20.回退到指定的版本
+            在一行上展示所有的提交历史
+            git log --pretty=oneline
+            使用git reset --hard 命令，根据指定的提交ID回退到指定版本
+            git reset --hard <CommitID>
+                在旧版本中使用git reflog --pretty=oneline命令，查看命令操作的历史
+                git reflog --pretty=oneline
+                再次根据最新的提交ID，跳转到最新的版本
+                git reset--hard <CommitID>
 
 
 
